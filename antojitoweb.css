@@ -1,0 +1,1359 @@
+/* ==========================
+   FUENTES PERSONALIZADAS
+========================= */
+@font-face {
+    font-family: "Author Handwriting";
+    src: url("fuentes/Author Handwriting.otf");
+}
+
+@font-face {
+    font-family: AMORIA;
+    src: url("fuentes/AMORIA.otf");
+}
+
+@font-face {
+    font-family: MexicanTequila;
+    src: url("fuentes/MexicanTequila.ttf");
+}
+
+@font-face {
+    font-family: Loverine;
+    src: url("fuentes/Loverine.otf");
+}
+
+@font-face {
+    font-family: "SwirlyCanalope";
+    src: url("fuentes/SwirlyCanalope.otf");
+}
+
+/* ==========================
+   MAIN DELIVERY
+========================== */
+
+main#delivery {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 60px 20px; /* más padding general */
+    gap: 50px;
+     font-family: "SwirlyCanalope", sans-serif;
+    background-color: #fffbe6;
+}
+
+/* Título */
+main#delivery h1 {
+    font-family: MexicanTequila, sans-serif;
+    font-size: 3rem;
+    color: #b02a45;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contenedordelivery{
+	display:flex;
+	flex-direction:row;
+	gap:6px;
+	padding:4px;
+}
+
+/* Contenedor general */
+.productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px 0;
+}
+
+/* Tarjeta del producto */
+.producto {
+    background: #eaffdb;
+    border: 1px solid #b7d4a8;
+    border-radius: 18px;
+    width: 230px;
+    padding: 18px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* Hover suave y moderno */
+.producto:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+}
+
+/* Imagen del producto */
+.producto img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    transition: transform .25s ease;
+}
+
+.producto:hover img {
+    transform: scale(1.03);
+}
+
+/* Título */
+.producto h2 {
+    font-family: Loverine, sans-serif;
+    font-size: 1.35rem;
+    color: #5a0b03;
+    margin-bottom: 6px;
+}
+
+/* Precio */
+.producto .precio {
+    font-size: 1.1rem;
+    color: #3e0704;
+    font-weight: bold;
+    margin-bottom: 14px;
+}
+
+/* Botón */
+.agregar-btn {
+    width: 100%;
+    background-color: #5fc488;
+    color: white;
+    border: none;
+    padding: 11px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: transform .2s ease, background .25s ease;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+
+.agregar-btn:hover {
+    background-color: #4aa66e;
+    transform: translateY(-2px);
+}
+
+/* Carrito */
+.carrito {
+    background-color: #ffe69c;
+    border: 2px solid #b02a45;
+    border-radius: 18px;
+    padding: 18px;
+    width: 350px;
+    max-width: 90%;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 20px;
+}
+
+/* From Uiverse.io by fthisilak */ 
+.pay-btn {
+  position: relative;
+  padding: 12px 24px;
+  font-size: 16px;
+  background: #1a1a1a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  margin-top:12px;
+  margin-bottom:12px;
+}
+
+.pay-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.icon-container {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  color: #22c55e;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.default-icon {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hover animations */
+.pay-btn:hover .icon {
+  animation: none;
+}
+
+.pay-btn:hover .wallet-icon {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.pay-btn:hover .card-icon {
+  animation: iconRotate 2.5s infinite;
+  animation-delay: 0s;
+}
+
+.pay-btn:hover .payment-icon {
+  animation: iconRotate 2.5s infinite;
+  animation-delay: 0.5s;
+}
+
+.pay-btn:hover .dollar-icon {
+  animation: iconRotate 2.5s infinite;
+  animation-delay: 1s;
+}
+
+.pay-btn:hover .check-icon {
+  animation: iconRotate 2.5s infinite;
+  animation-delay: 1.5s;
+}
+
+/* Active state - show only checkmark */
+.pay-btn:active .icon {
+  animation: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.pay-btn:active .check-icon {
+  animation: checkmarkAppear 0.6s ease forwards;
+  visibility: visible;
+}
+
+.btn-text {
+  font-weight: 600;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+@keyframes iconRotate {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px) scale(0.5);
+  }
+  5% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+  15% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+  20% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.5);
+  }
+}
+
+@keyframes checkmarkAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-45deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+
+#vaciar-carrito {
+    background-color: #e05863;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#vaciar-carrito:hover {
+    background-color: #c50005;
+}
+
+
+/* ==========================
+       ESPECIALIDADES
+    ========================== */
+	
+	.contenedor{
+		display:flex;
+		background-color:white;
+		flex-direction:row;
+		width:90%;
+		height:auto;
+		justify-content:center;
+        gap:3px;
+		padding:4px;
+		padding:20px;
+		 
+		
+	}
+	
+	.tarjeta{
+		display:flex;
+	background-color:#defcb6;
+	height:auto;
+	flex-direction:column;
+	width:30%;
+	border-radius:15px;
+	}
+	
+	.texto{
+		height:auto;
+		background-color:#defcb6;
+	border-bottom-left-radius:15px;
+		border-bottom-right-radius:15px;
+		width:95%;
+		margin:auto;
+		font-size:20px;
+		font-family:Times new roman;
+		padding:3px;
+		
+	}
+	
+	.foto img{
+	width:100%;
+	height:auto;
+	display:block;
+    margin:auto;
+	border-top-right-radius:15px;
+	border-top-left-radius:15px;
+	}
+	
+	.tarjeta2{
+		display:flex;
+	background-color:#defcb6;
+	height:auto;
+	flex-direction:column;
+	width:30%;
+	border-radius:15px;
+	}
+	
+	.texto2{
+		height:auto;
+		background-color:#defcb6;
+	border-bottom-left-radius:15px;
+		border-bottom-right-radius:15px;
+		width:95%;
+		margin:auto;
+		font-size:20px;
+		font-family:Times new roman;
+		padding:3px;
+	}
+	
+	.foto2 img{
+	width:100%;
+	height:auto;
+	display:block;
+    margin:auto;
+	border-top-right-radius:15px;
+	border-top-left-radius:15px;
+
+	background-color:blue;
+	}
+	
+	.foto2 img{
+		background-color:#8b8c89;
+	}
+	
+	.tarjeta3{
+		display:flex;
+	background-color:#defcb6;
+	height:auto;
+	flex-direction:column;
+	width:30%;
+	border-radius:15px;
+	}
+	
+	.texto3{
+		height:auto;
+		background-color:#defcb6;
+	border-bottom-left-radius:15px;
+		border-bottom-right-radius:15px;
+		width:95%;
+		margin:auto;
+		font-size:20px;
+		font-family:Times new roman;
+		padding:3px;
+	}
+	
+	.foto3 img{
+	width:100%;
+	height:auto;
+	display:block;
+    margin:auto;
+	border-top-right-radius:15px;
+	border-top-left-radius:15px;
+	}
+	
+/* ==========================
+   BASE
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+body {
+    height: auto;
+}
+
+/* ==========================
+   HISTORIA
+========================= */
+
+.textohist{
+	 font-family: "SwirlyCanalope";
+	font-size:30px;
+	padding:5px;
+	width:70%;
+	line-height:40px;
+}
+h1{
+	padding:10px;
+}
+.imghist{
+padding:10px;
+
+}
+
+/* ==========================
+   TACOS
+========================= */
+.tacostext{
+width:70%;
+font-family:author handwriting;
+font-size:30px;
+justify-content:center;
+text-align:center;
+line-height:40px;
+}
+
+.fototac{
+padding:20px;
+display:flex;
+font-size:25px;
+text-align:centeR;
+
+	}
+	
+	.tacossubt{
+    font-family:Loverine;
+	font-size:25px;
+	color:#450209;
+	}
+	.kitchen-scroll {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.step {
+  background: #b02a45; /* rojo por defecto */
+  color: white;
+  border-radius: 15px;
+  padding: 40px;
+  margin: 100px 0;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Alternar colores: verde para los pasos pares */
+.step:nth-child(even) {
+  background: #68b684; /* verde oscuro */
+}
+
+.step h2 {
+  margin-bottom: 15px;
+  font-size: 1.8em;
+}
+
+.step p {
+  font-size: 1.1em;
+  line-height: 1.5em;
+}
+
+.step.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+	/* ==========================
+   BOTÓN
+========================= */
+	
+.button {
+  display: flex;
+  padding:15px;
+}
+
+.box {
+  width: 35px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none; /* para que no sea azul */
+  transition: all .8s;
+  cursor: pointer;
+  position: relative;
+  background:  #b02a45;;
+  overflow: hidden;
+  
+}
+
+/* Antes acá estaba el problema: SOLO repetías una letra */
+/* Ahora cada una tiene su letra correcta */
+.box:nth-child(1)::before { content: '+'; }
+.box:nth-child(2)::before { content: 'I'; transform: translateY(-100%); }
+.box:nth-child(3)::before { content: 'N'; }
+.box:nth-child(4)::before { content: 'F'; transform: translateY(-100%); }
+.box:nth-child(5)::before { content: 'O'; }
+.box:nth-child(6)::before { content: 'R'; transform: translateY(-100%); }
+.box:nth-child(7)::before { content: 'M'; }
+.box:nth-child(8)::before { content: 'A'; transform: translateY(-100%); }
+.box:nth-child(9)::before { content: 'C'; }
+.box:nth-child(10)::before { content: 'I'; transform: translateY(-100%); }
+.box:nth-child(11)::before { content: 'Ó'; }
+.box:nth-child(12)::before { content: 'N'; transform: translateY(-100%); }
+
+/* ESTO es lo que hace que uno suba y otro baje */
+.box:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:   #68b684;
+  transform: translateY(100%);
+  transition: transform .4s;
+}
+
+/* Hover global */
+.button:hover .box:before {
+  transform: translateY(0);
+}
+
+	
+/* ==========================
+   HEADER
+========================= */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+    display: flex;
+    width: 100%;
+    height: auto;
+    background: linear-gradient(90deg, #000000, #292723);
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    border-bottom: 1px solid #eee;
+}
+
+/* ==========================
+   LOGO
+========================= */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 15%;
+    height: auto;
+    margin-top: 1%;
+}
+
+.logo img {
+    cursor: pointer;
+    user-select: none;
+    max-width: 100%;
+    height: auto;
+}
+
+/* ==========================
+   NAVBAR PRINCIPAL
+========================= */
+nav#main-nav {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background: #fff;
+    padding: 12px 18px;
+    border-radius: 40px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .85s cubic-bezier(.2,.8,.2,1), opacity .85s ease;
+    z-index: 1002;
+    width: 80%;
+    justify-content: space-evenly;
+    font-family: AMORIA;
+}
+
+nav#main-nav.open {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+nav#main-nav a {
+    font-size: 20px;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s;
+    width: 18%;
+    height: 40px;
+}
+
+nav#main-nav a:hover {
+    background-color: #d93b3b;
+    color: #fff;
+    font-size: 21px;
+    border-radius: 5px;
+    height: 40px;
+}
+
+/* ==========================
+   HAMBURGUESA
+========================= */
+.hamburger {
+    display: none;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 0;
+    position: relative;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.hamburger .bar,
+.hamburger .bar::before,
+.hamburger .bar::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    height: 3px;
+    background: #731209;
+    border-radius: 2px;
+    transition: transform .3s ease;
+}
+
+.hamburger .bar { top: 50%; }
+.hamburger .bar::before { top: -10px; }
+.hamburger .bar::after { top: 10px; }
+
+/* Animación "X" sin ocultar la barra central */
+.hamburger[aria-expanded="true"] .bar::before { transform: translateY(10px) rotate(45deg); }
+.hamburger[aria-expanded="true"] .bar::after  { transform: translateY(-10px) rotate(-45deg); }
+
+
+.logoh {
+    display: none;      
+    max-width: 50px;    
+    height: auto;
+}
+
+/* ==========================
+   MAIN
+========================= */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ==========================
+   INDEX
+========================= */
+/* From Uiverse.io by AatreyuShau */ 
+.button {
+  text-align: center;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  background-color: transparent;
+  filter: url(#handDrawnNoise);
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  font-family: "Courier New", monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 1em;
+  border-width: 0px;
+  border-radius: 2rem;
+  box-shadow: #33333366 4px 4px 0 1px;
+  animation: idle 1s infinite ease-in-out;
+  margin-bottom:10px;
+}
+
+.highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  fill: rgba(255, 225, 0, 0.5);
+  stroke: rgba(255, 225, 0, 0.5); /* Yellow highlighter */
+  stroke-width: 10;
+  stroke-linecap: round;
+  pointer-events: none;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 0.5s ease-in-out;
+}
+
+@keyframes idle {
+  0% {
+    filter: url(#handDrawnNoise);
+  }
+  50% {
+    rotate: 2.5deg;
+    filter: url(#handDrawnNoise2);
+  }
+  100% {
+    filter: url(#handDrawnNoise);
+  }
+}
+
+.button-cosm {
+  fill: #33333366;
+  transition: 0.3s ease-out;
+  scale: 0.5;
+  position: absolute;
+  translate: calc(-100% + 24px) 1.5rem;
+}
+
+.button:hover {
+  font-weight: bold;
+  border-width: 0px;
+  border-radius: 2rem;
+}
+
+.button:hover {
+  font-weight: bold;
+  border-width: 0px;
+  border-radius: 2rem;
+  rotate: -2.5deg;
+  animation: hover 2.5s infinite ease-in-out;
+}
+
+.button:hover .highlight {
+  stroke-dashoffset: 0;
+}
+
+.button:active .highlight {
+  stroke-dashoffset: 1000;
+  animation:
+    highlight 5s infinite,
+    col 0.5s forwards;
+  stroke: #bc4e2666;
+}
+
+@keyframes col {
+  0% {
+    stroke: rgba(255, 225, 0, 0.5);
+  }
+  100% {
+    stroke: #1c98eb66;
+  }
+}
+
+@keyframes highlight {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  25% {
+    stroke-dashoffset: 1000;
+  }
+  50% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes hover {
+  0% {
+    rotate: 0deg;
+    filter: url(#handDrawnNoise);
+    translate: 0 0px;
+  }
+  25% {
+    rotate: -1deg;
+    filter: url(#handDrawnNoise2);
+    translate: 0 -2px;
+  }
+  50% {
+    rotate: 0deg;
+    filter: url(#handDrawnNoise);
+    translate: 0 2px;
+  }
+  75% {
+    rotate: -1deg;
+    filter: url(#handDrawnNoise2);
+    translate: 0 -2px;
+  }
+  100% {
+    rotate: 0deg;
+    filter: url(#handDrawnNoise);
+    translate: 0 0px;
+  }
+}
+
+.button:hover .button-cosm {
+  rotate: -15deg;
+  translate: calc(-100% + 22px) 1.9rem;
+}
+
+.button:active .button-cosm {
+  fill: #333333f1;
+  rotate: -135deg;
+  translate: calc(-100% + 55px) 1.6rem;
+  animation: none;
+}
+
+.button:active {
+  font-weight: bold;
+  border-width: 0px;
+  border-radius: 2rem;
+  box-shadow: inset #333333f1 4px 4px 0 1px;
+  rotate: -2.5deg;
+  animation: active 1s infinite ease-in-out;
+}
+
+@keyframes active {
+  0% {
+    filter: url(#handDrawnNoiset);
+    translate: 0 -1px;
+  }
+  25% {
+    rotate: -3deg;
+  }
+  50% {
+    filter: url(#handDrawnNoiset2);
+    translate: 0 1px;
+  }
+  66% {
+    rotate: 1.5deg;
+  }
+  100% {
+    filter: url(#handDrawnNoiset);
+    translate: 0 -1px;
+  }
+}
+
+
+#index h1 {
+    font-family: MexicanTequila;
+    font-size: 50px;
+    font-weight: normal;
+    text-align: center;
+    background: linear-gradient(270deg, #8b1c31, #b02a45, #e36a6a,#d6a18a,#68b684);
+    background-size: 1400% 1400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: colorShift 10s ease infinite;
+    margin-bottom: 0;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+#index .subtit h2 {
+    font-family: Loverine;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+	color:#2b090b;
+}
+
+#index .presentacion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 16px;
+    flex-wrap: wrap;
+}
+
+#index .bloque-video video {
+    width: 280px;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+}
+
+#index .bloque-texto {
+    max-width: 640px;
+    text-align: left;
+}
+
+#index .bloque-texto p {
+     font-family: "SwirlyCanalope";
+    letter-spacing: 1px;
+    font-size: 1.9rem;
+    line-height: 1.3;
+	width:60%;
+	color:#2b090b;
+}
+
+/* ==========================
+   RESEÑAS
+========================= */
+.h1res {
+    font-family: Author Handwriting;
+    font-size: 30px;
+    font-weight: normal;
+    text-align: center;
+    background: linear-gradient(270deg, #8b1c31, #b02a45, #e36a6a,#d6a18a,#68b684);
+    background-size: 1400% 1400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: colorShift 10s ease infinite;
+    margin-bottom: 0;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.reseñas-intro p {
+     font-family: "SwirlyCanalope";
+    font-size: 29px;
+    padding: 7px;
+	text-align:center;
+	justify-content:center;
+
+}
+
+.reseña {
+    background-color: #a5d9b8;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all .5s ease;
+}
+
+.reseña.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reseña h3 {
+    margin: 0;
+    color: #1d3827;
+}
+
+.reseña .fecha {
+    font-size: .9rem;
+    color: #666;
+}
+
+.reseña .calificacion {
+    font-size: 1.2rem;
+    color: #e80008;
+    margin-top: 5px;
+}
+
+.deja-reseña input,
+.deja-reseña textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.deja-reseña button {
+    background-color: #e80008;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.deja-reseña button:hover {
+    background-color: #f26166;
+}
+
+.estrellas {
+    display: flex;
+    margin-bottom: 10px;
+	color:#e80008;
+}
+
+.estrellas span {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color .2s;
+}
+
+.estrellas span.hover,
+.estrellas span.seleccionada {
+    color: #e80008;
+}
+
+/* ==========================
+   FOOTER
+========================= */
+.footer {
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid rgba(0,0,0,.1);
+    font-family: Author Handwriting;
+    font-size: 30px;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-logo {
+    max-width: 150px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.footer-direccion,
+.footer-telefono,
+.footer-copy {
+    font-size: 20px;
+    margin: 0;
+}
+
+.footer-redes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-redes a img {
+    width: 32px;
+    height: 32px;
+    transition: transform .3s, opacity .3s;
+}
+
+.footer-redes a img:hover {
+    transform: scale(1.2);
+    opacity: .8;
+}
+
+/* ==========================
+   GALERÍA
+========================= */
+body#galeria main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px 16px;
+	justify-content:center;
+}
+
+body#galeria .galeriatitulo {
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: 30px;
+    text-align: center;
+	justify-content:center;
+}
+
+body#galeria .galeriatitulo h1 {
+    font-family: MexicanTequila;
+    font-size: 50px;
+    font-weight: normal;
+    background: linear-gradient(270deg, #8b1c31, #b02a45, #e36a6a,#d6a18a,#68b684);
+    background-size: 1400% 1400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: colorShift 10s ease infinite;
+    margin: 0;
+}
+
+body#galeria #vlightbox1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    width: 100%;
+    max-width: 1100px;
+	margin-left:175px;
+}
+
+body#galeria #vlightbox1 img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    object-fit: cover;
+}
+
+/* ==========================
+   ANIMACIÓN MULTICOLOR
+========================= */
+@keyframes colorShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ==========================
+   MEDIA QUERIES
+========================= */
+@media (max-width:900px) {
+	#index h1 { font-size: clamp(2rem, 8vw, 50px); white-space: normal; text-align: center; margin-top: 10px; }
+	
+	body#galeria .galeriatitulo h1 { font-size: clamp(2rem, 8vw, 50px); white-space: normal; text-align: center; padding-left: 8px; } body#galeria #vlightbox1 { grid-template-columns: repeat(2, 1fr); gap: 12px; margin:auto; }
+  .logo img {
+        width: 100px;  /* tamaño que quieras */
+        height: auto;  /* mantiene proporción */
+        display: block;
+    }
+  .logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 16px;
+  box-sizing: border-box;
+}
+
+.logo img {
+  width: 70px;
+  height: auto;
+  cursor: pointer;
+  z-index: 1102;
+}
+
+/* Botón hamburguesa a la derecha */
+.hamburger {
+  display: inline-block;
+  position: relative;
+  z-index: 1102;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Barras de la hamburguesa */
+.hamburger .bar,
+.hamburger .bar::before,
+.hamburger .bar::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    height: 3px;
+    background: #731209;
+    border-radius: 2px;
+    transition: transform .3s ease;
+}
+
+.hamburger .bar { top: 50%; }
+.hamburger .bar::before { top: -10px; }
+.hamburger .bar::after { top: 10px; }
+
+/* Animación "X" sin ocultar la barra central */
+.hamburger[aria-expanded="true"] .bar::before { transform: translateY(10px) rotate(45deg); }
+.hamburger[aria-expanded="true"] .bar::after  { transform: translateY(-10px) rotate(-45deg); }
+
+
+/* ==========================
+   MEDIA QUERIES MÓVIL
+========================== */
+@media (max-width:900px) {
+	.hamburger {
+    position: absolute !important;
+    left: 10px !important;
+    right: auto !important;
+}
+#index .bloque-texto p {
+	width:60%;
+margin-left:23%;
+}
+    /* TITULOS */
+    #index h1 {
+        font-size: clamp(2rem, 8vw, 50px);
+        white-space: normal;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    /* LOGO + HAMBURGUESA */
+/* ======== MEDIA QUERIES MÓVIL ======== */
+@media (max-width:900px) {
+	.logoh{
+		display:flex;
+		width:70px;
+		height:70px;
+		justify-content:flex-start;
+		padding:5px;
+	}
+	
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 16px;
+    box-sizing: border-box;
+  }
+
+  .logo img {
+    width: 70px;
+    height: auto;
+    cursor: pointer;
+    z-index: 1102;
+  }
+
+  /* Botón hamburguesa */
+     nav#main-nav {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        border-radius: 0;
+        padding: 8px 0;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        background: #fff;
+        transition: transform .3s ease, opacity .3s ease;
+    }
+
+    nav#main-nav.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    nav#main-nav a {
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(0,0,0,.04);
+        width: 100%;
+        text-align: center;
+    }
+	
+
+
+
+  .contenedor {
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .tarjeta, .tarjeta2, .tarjeta3 {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+ 
+  .imghist img,
+  .fototac img {
+    display: inline-block;
+    max-width: 100%;      
+    height: auto;       
+  }
+
+  .fototac { text-align: center; }
+
+  
+  .h1res {
+    width: 80%;
+    height:auto;
+    justify-content:center;
+    text-align:center;
+  }
+
+	.contenedordelivery{
+		flex-direction:column;
+	}
+
+.button{
+	width:90%;
+}
+}

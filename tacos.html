@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Restaurante El Antojito</title>
+  <link href="antojitoweb.css" rel="stylesheet" type="text/css"/>
+  <link rel="icon" href="imagenes/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="engine1/style.css" />
+  <script type="text/javascript" src="engine1/jquery.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    .progress-bar-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 5px;
+      background-color: #f3f3f3;
+      z-index: 9999;
+    }
+    .progress-bar { height: 100%; width: 0; background-color: #fcae05; }
+
+    body { margin: 0; padding: 0; height: auto; }
+
+    header {
+      position: sticky; top: 0; background: #fff; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 16px; border-bottom: 1px solid #eee; overflow: hidden;
+    }
+    .logo { display: flex; align-items: center; gap: 8px; }
+
+    .menu-overlay{
+      position:fixed; top:0; left:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.4); opacity:0; visibility:hidden; transition:opacity .6s ease; z-index:998;
+    }
+    .menu-overlay.active{ opacity:1; visibility:visible; }
+
+    nav#main-nav{
+      position:absolute; top:50%; left:235px;
+      transform:translateY(-50%) translateX(-40px);
+      display:flex; gap:20px; align-items:center; background:#fff;
+      padding:12px 18px; border-radius:40px; box-shadow:0 6px 18px rgba(0,0,0,0.12);
+      opacity:0; pointer-events:none;
+      transition:transform .85s cubic-bezier(.2,.8,.2,1), opacity .85s ease;
+      z-index:1002;
+    }
+    nav#main-nav.open{ transform:translateY(-50%) translateX(0); opacity:1; pointer-events:auto; }
+    nav#main-nav a{ text-decoration:none; color:#2c9e03; font-weight:700; font-size:16px; padding:6px 10px; white-space:nowrap; }
+    nav#main-nav a:hover{ color:#ffffff; }
+
+    .logo img{ cursor:pointer; user-select:none; }
+
+    .presentacion{
+      display:flex; align-items:flex-start; justify-content:center;
+      gap:32px; max-width:1100px; margin:60px auto; padding:0 16px;
+    }
+    .bloque-video video{ width:360px; height:auto; display:block; border-radius:8px; }
+    .bloque-texto{ max-width:640px; text-align:left; font-size:1.1rem; line-height:1.6; }
+
+    @media (max-width:900px){
+      .presentacion{ flex-direction:column; text-align:center; }
+      .bloque-video video{ width:100%; max-width:480px; }
+      .bloque-texto{ text-align:center; }
+    }
+
+    .hamburger {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      z-index: 1100;
+    }
+    .hamburger .bar,
+    .hamburger .bar::before,
+    .hamburger .bar::after {
+      content: "";
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      height: 3px;
+      background: #731209;
+      border-radius: 2px;
+      transition: transform .3s ease, opacity .3s ease;
+    }
+    .hamburger .bar { top: 50%; transform: translateY(-50%); }
+    .hamburger .bar::before { top: -10px; }
+    .hamburger .bar::after { top: 10px; }
+    .hamburger[aria-expanded="true"] .bar { opacity: 0; }
+    .hamburger[aria-expanded="true"] .bar::before { transform: translateY(10px) rotate(45deg); }
+    .hamburger[aria-expanded="true"] .bar::after { transform: translateY(-10px) rotate(-45deg); }
+
+    @media (max-width: 900px) {
+      .logo img { display: none !important; }
+      .hamburger { display: inline-block !important; }
+      .logo a { pointer-events: none; }
+      nav#main-nav{
+        position:fixed; top:64px; left:0; width:100%;
+        transform:translateY(-100%); opacity:0; pointer-events:none;
+        flex-direction:column; align-items:stretch; gap:0; border-radius:0;
+        padding:8px 12px; box-shadow:0 6px 18px rgba(0,0,0,0.12);
+        background:#fff; transition:transform .3s ease, opacity .3s ease;
+      }
+      nav#main-nav.open{
+        transform:translateY(0); opacity:1; pointer-events:auto;
+      }
+      nav#main-nav a{ padding:12px 16px; border-bottom:1px solid rgba(0,0,0,0.04); }
+    }
+
+    @media (min-width: 901px) {
+      .hamburger { display: none !important; }
+      .logo img { display: inline-block !important; }
+    }
+  </style>
+</head>
+
+<body id="index">
+  <div class="progress-bar-container"><div class="progress-bar"></div></div>
+
+  <header>
+    <div class="logo">
+      <a href="index.html" title="Página principal">
+        <img src="imagenes/logo.png" alt="logo">
+      </a>
+      <button class="hamburger" id="menuToggle" aria-label="Abrir menú" aria-controls="main-nav" aria-expanded="false">
+        <span class="bar"></span>
+      </button>
+    </div>
+<div class="logoh">
+	<img src="imagenes/logoh.png" alt="logo">
+	</div>
+    <nav id="main-nav">
+      <a href="index.html">INICIO</a>
+      <a href="historia.html">HISTORIA</a>
+      <a href="especialidades.html">ESPECIALIDADES</a>
+      <a href="galeria.html">GALERÍA GASTRONÓMICA</a>
+      <a href="delivery.html">DELIVERY</a>
+      <a href="reseñas.html">RESEÑAS</a>
+    </nav>
+  </header>
+
+  <main>
+  <h1>Como nos manejamos en la cocina</h1>
+  <div class="tacostext">
+    <p>
+En nuestra cocina cada detalle importa.
+ Antes de que empiece el servicio,
+ el equipo prepara un mise en place que parece
+ casi una ceremonia: ingredientes frescos,
+ cortes exactos, utensilios en su lugar y cada estación
+ organizada como si fuera un pequeño laboratorio.
+ Ese orden es lo que permite que todo funcione
+ sin caos, incluso en los momentos más intensos.
+
+Cuando llega la hora de cocinar, la coordinación 
+es clave. Cada cocinero sabe exactamente qué hacer,
+ cuándo hacerlo y cómo encajar con el resto del
+ equipo. Los movimientos parecen ensayados: uno monta,
+ otro cocina, otro ajusta sabores, y así, 
+ sin interrupciones. La comunicación es clara, 
+ rápida y directa, y esa armonía hace que los 
+ platos salgan con una precisión que sorprende.
+
+La limpieza es parte del proceso. Nada se deja
+ para después: se cocina y se limpia al mismo 
+ tiempo. Las superficies se mantienen impecables,
+ los utensilios se lavan al instante y cada estación
+ queda lista para el siguiente paso. Para muchos 
+ puede pasar desapercibido, pero para nosotros
+ es fundamental: un espacio limpio es un plato
+ mejor.
+
+Y aunque trabajamos con método, también hay espacio
+ para la creatividad. Constantemente probamos 
+ combinaciones nuevas, afinamos técnicas y buscamos 
+ maneras de mejorar cada preparación. La innovación
+ no nace del desorden, sino del control: cuando
+ todo está en su lugar, es más fácil dejar que 
+ las ideas fluyan.
+
+Así trabajamos todos los días: con organización,
+ con disciplina y con una pasión real por lo que 
+ hacemos. Cada plato que llega a la mesa no es 
+ solo comida; es el resultado de un equipo que
+ realmente se toma en serio el arte de cocinar.
+	</p>
+	</div>
+	<div class="fototac">
+	<img src="imagenes/cocina.jpg" alt="Cocina">
+	</div>
+<div class="kitchen-scroll">
+  <section class="step" id="step1">
+    <h2>Mise en Place</h2>
+    <p>Ingredientes frescos, cortes exactos y utensilios en su lugar. Cada estación organizada como un laboratorio.</p>
+  </section>
+
+  <section class="step" id="step2">
+    <h2>Coordinación</h2>
+    <p>Cada cocinero sabe exactamente qué hacer y cuándo. Movimientos sincronizados y comunicación clara.</p>
+  </section>
+
+  <section class="step" id="step3">
+    <h2>Limpieza</h2>
+    <p>Se cocina y se limpia al mismo tiempo. Superficies impecables y utensilios lavados al instante.</p>
+  </section>
+
+  <section class="step" id="step4">
+    <h2>Creatividad</h2>
+    <p>Probar combinaciones nuevas, afinar técnicas y mejorar cada preparación. La innovación nace del control.</p>
+  </section>
+
+  <section class="step" id="step5">
+    <h2>Plato Listo</h2>
+    <p>El resultado de organización, disciplina y pasión. Cada plato es una obra del equipo.</p>
+  </section>
+</div>
+
+	
+  </main>
+
+ <footer class="footer">
+  <div class="footer-container">
+   
+    <img src="imagenes/logo.png" alt="Logo El Antojito" class="footer-logo">
+
+    <p class="footer-direccion">Calle Falsa 123, Springfield</p>
+    <p class="footer-telefono">Tel: +54 9 11 1234-5678</p>
+    
+    <div class="footer-redes">
+       <a href="https://www.instagram.com/" alt="instagram" target="_blank"><img src="imagenes/insta.png" alt="Instagram"></a>
+      <a href="https://www.facebook.com/" alt="facebook" target="_blank"><img src="imagenes/facebook.png" alt="Facebook"></a>
+    </div>
+   
+    <p class="footer-copy">© 2025 El Antojito</p>
+  </div>
+</footer>
+
+  <script>
+    window.onscroll = function() {
+      var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+      var progress = (scrollPosition / docHeight) * 100;
+      document.querySelector('.progress-bar').style.width = progress + '%';
+    };
+
+    (function(){
+      const btn = document.getElementById('menuToggle');
+      const nav = document.getElementById('main-nav');
+      btn.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      });
+    })();
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const logo = document.querySelector(".logo img");
+      const nav = document.querySelector("nav#main-nav");
+      const overlay = document.createElement("div");
+      overlay.className = "menu-overlay";
+      document.body.appendChild(overlay);
+      logo.addEventListener("click", (event) => {
+        event.preventDefault();
+        const isOpen = nav.classList.toggle("open");
+        overlay.classList.toggle("active", isOpen);
+      });
+      overlay.addEventListener("click", () => {
+        nav.classList.remove("open");
+        overlay.classList.remove("active");
+      });
+    });
+  </script>
+  <script>
+const steps = document.querySelectorAll('.step');
+
+function revealSteps() {
+  const triggerBottom = window.innerHeight * 0.85;
+
+  // Aparece al bajar
+  steps.forEach(step => {
+    const rect = step.getBoundingClientRect();
+    if(rect.top < triggerBottom) {
+      step.classList.add('visible');
+    }
+  });
+
+  // Desaparece desde abajo al subir
+  for(let i = steps.length - 1; i >= 0; i--) {
+    const step = steps[i];
+    const rect = step.getBoundingClientRect();
+    if(rect.bottom > window.innerHeight) {
+      step.classList.remove('visible');
+    }
+  }
+}
+
+window.addEventListener('scroll', revealSteps);
+window.addEventListener('load', revealSteps);
+
+
+  </script>
+  <script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

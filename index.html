@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Restaurante El Antojito</title>
+  <link href="antojitoweb.css" rel="stylesheet" type="text/css"/>
+  <link rel="icon" href="imagenes/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="engine1/style.css" />
+  <script type="text/javascript" src="engine1/jquery.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    .progress-bar-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 5px;
+      background-color: #f3f3f3;
+      z-index: 9999;
+    }
+    .progress-bar { height: 100%; width: 0; background-color: #fcae05; }
+
+    body { margin: 0; padding: 0; height: auto; }
+
+    header {
+      position: sticky; top: 0; background: #fff; z-index: 1000;
+      display: flex; align-items: center; justify-content:flex-start;
+      padding: 8px 16px; border-bottom: 1px solid #eee; overflow: hidden;
+    }
+    .logo { display: flex; align-items: center; gap: 8px; }
+
+    .menu-overlay{
+      position:fixed; top:0; left:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.4); opacity:0; visibility:hidden; transition:opacity .6s ease; z-index:998;
+    }
+    .menu-overlay.active{ opacity:1; visibility:visible; }
+
+    nav#main-nav{
+      position:absolute; top:50%; left:235px;
+      transform:translateY(-50%) translateX(-40px);
+      display:flex; gap:20px; align-items:center; background:#fff;
+      padding:12px 18px; border-radius:40px; box-shadow:0 6px 18px rgba(0,0,0,0.12);
+      opacity:0; pointer-events:none;
+      transition:transform .85s cubic-bezier(.2,.8,.2,1), opacity .85s ease;
+      z-index:1002;
+    }
+    nav#main-nav.open{ transform:translateY(-50%) translateX(0); opacity:1; pointer-events:auto; }
+    nav#main-nav a{ text-decoration:none; color:#2c9e03; font-weight:700; font-size:16px; padding:6px 10px; white-space:nowrap; }
+    nav#main-nav a:hover{ color:#ffffff; }
+
+    .logo img{ cursor:pointer; user-select:none; }
+
+    .presentacion{
+      display:flex; align-items:flex-start; justify-content:center;
+      gap:32px; max-width:1100px; margin:60px auto; padding:0 16px;
+    }
+    .bloque-video video{ width:360px; height:auto; display:block; border-radius:8px; }
+    .bloque-texto{ max-width:640px; text-align:left; font-size:1.1rem; line-height:1.6; }
+
+    @media (max-width:900px){
+      .presentacion{ flex-direction:column; text-align:center; }
+      .bloque-video video{ width:100%; max-width:480px; }
+      .bloque-texto{ text-align:center; }
+    }
+
+    .hamburger {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      z-index: 1100;
+    }
+    .hamburger .bar,
+    .hamburger .bar::before,
+    .hamburger .bar::after {
+      content: "";
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      height: 3px;
+      background: #731209;
+      border-radius: 2px;
+      transition: transform .3s ease, opacity .3s ease;
+    }
+    .hamburger .bar { top: 50%; transform: translateY(-50%); }
+    .hamburger .bar::before { top: -10px; }
+    .hamburger .bar::after { top: 10px; }
+    .hamburger[aria-expanded="true"] .bar { opacity: 0; }
+    .hamburger[aria-expanded="true"] .bar::before { transform: translateY(10px) rotate(45deg); }
+    .hamburger[aria-expanded="true"] .bar::after { transform: translateY(-10px) rotate(-45deg); }
+
+    @media (max-width: 900px) {
+      .logo img { display: none !important; }
+      .hamburger { display: inline-block !important; }
+      .logo a { pointer-events: none; }
+      nav#main-nav{
+        position:fixed; top:64px; left:0; width:100%;
+        transform:translateY(-100%); opacity:0; pointer-events:none;
+        flex-direction:column; align-items:stretch; gap:0; border-radius:0;
+        padding:8px 12px; box-shadow:0 6px 18px rgba(0,0,0,0.12);
+        background:#fff; transition:transform .3s ease, opacity .3s ease;
+      }
+      nav#main-nav.open{
+        transform:translateY(0); opacity:1; pointer-events:auto;
+      }
+      nav#main-nav a{ padding:12px 16px; border-bottom:1px solid rgba(0,0,0,0.04); }
+    }
+
+    @media (min-width: 901px) {
+      .hamburger { display: none !important; }
+      .logo img { display: inline-block !important; }
+    }
+  </style>
+</head>
+
+<body id="index">
+  <div class="progress-bar-container"><div class="progress-bar"></div></div>
+
+  <header>
+    <div class="logo">
+      <a href="index.html" title="Página principal">
+        <img src="imagenes/logo.png" alt="logo">
+      </a>
+      <button class="hamburger" id="menuToggle" aria-label="Abrir menú" aria-controls="main-nav" aria-expanded="false">
+        <span class="bar"></span>
+      </button>
+    </div>
+<div class="logoh">
+	<img src="imagenes/logoh.png" alt="logo">
+	</div>
+    <nav id="main-nav">
+      <a href="index.html">INICIO</a>
+      <a href="historia.html">HISTORIA</a>
+      <a href="especialidades.html">ESPECIALIDADES</a>
+      <a href="galeria.html">GALERÍA GASTRONÓMICA</a>
+      <a href="delivery.html">DELIVERY</a>
+      <a href="reseñas.html">RESEÑAS</a>
+    </nav>
+  </header>
+
+  <div id="wowslider-container1">
+    <div class="ws_images">
+      <ul>
+        <li><img src="data1/images/1.png" alt="" title="" id="wows1_0"/></li>
+        <li><img src="data1/images/2.png" alt="" title="" id="wows1_1"/></li>
+        <li><img src="data1/images/3.png" alt="" title="" id="wows1_2"/></li>
+      </ul>
+    </div>
+    <div class="ws_script" style="position:absolute;left:-99%">
+      <a href="http://wowslider.net">css image slider</a> by WOWSlider.com v9.0
+    </div>
+    <div class="ws_shadow"></div>
+  </div>
+  <script type="text/javascript" src="engine1/wowslider.js"></script>
+  <script type="text/javascript" src="engine1/script.js"></script>
+
+  <main>
+    <h1>COMIDA TRADICIONAL MEXICANA EL ANTOJITO</h1>
+    <div class="subtit"><h2>(De México a tu plato)</h2></div>
+
+<section class="presentacion">
+  <div class="bloque-video">
+    <video src="videos/elantojitovid.mp4" autoplay muted playsinline loop preload="metadata">
+      Tu navegador no soporta video HTML5.
+    </video>
+  </div>
+
+  <div class="bloque-texto">
+    <p>
+      Un viaje con sabor a México.
+      Cada plato cuenta una historia:
+      sabores intensos, colores vivos
+      y ese toque picante que despierta
+      sonrisas. Un lugar para disfrutar,
+      compartir y viajar con el paladar.
+      Entre música, risas y aromas,
+      la mesa se vuelve el centro de
+      encuentro donde cada detalle invita
+      a celebrar. “El Antojito” es más
+      que un restaurante: es una
+      experiencia que transporta los
+      sentidos y convierte cada bocado
+      en una fiesta con sabor mexicano.
+    </p>
+  </div>
+</section>
+<a href="creditos.html">
+<button class="button">
+  <svg
+    class="button-cosm"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    fill="#000000"
+    width="128"
+    height="128"
+    viewBox="0 0 256 256"
+    id="Flat"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M243.07324,157.43945c-1.2334-1.47949-23.18847-27.34619-60.46972-41.05859-1.67579-17.97412-8.25293-34.36328-18.93653-46.87158C149.41309,52.8208,128.78027,44,104,44,54.51074,44,22.10059,88.57715,20.74512,90.4751a3.99987,3.99987,0,0,0,6.50781,4.65234C27.5625,94.6958,58.68359,52,104,52c22.36816,0,40.89648,7.85107,53.584,22.70508,8.915,10.437,14.65625,23.9541,16.65528,38.894A133.54185,133.54185,0,0,0,136,108c-25.10742,0-46.09473,6.48486-60.69434,18.75391-12.65234,10.63379-19.91015,25.39355-19.91015,40.49463a43.61545,43.61545,0,0,0,12.69336,31.21923C76.98438,207.3208,89.40234,212,104,212c23.98047,0,44.37305-9.4668,58.97461-27.37744,12.74512-15.6333,20.05566-37.145,20.05566-59.01953,0-.1128-.001-.22559-.001-.33838,33.62988,13.48486,53.62207,36.96631,53.89746,37.2959a4.00015,4.00015,0,0,0,6.14648-5.1211ZM104,204c-27.89746,0-40.60449-19.05078-40.60449-36.75146C63.39551,142.56592,86.11621,116,136,116a124.37834,124.37834,0,0,1,38.97266,6.32617q.05712,1.63038.05761,3.27686C175.03027,177.07129,139.29785,204,104,204Z"
+    ></path>
+  </svg>
+  <svg
+    class="highlight"
+    viewBox="0 0 144.75738 77.18431"
+    preserveAspectRatio="none"
+  >
+    <g transform="translate(-171.52826,-126.11624)">
+      <g
+        fill="none"
+        stroke-width="17"
+        stroke-linecap="round"
+        stroke-miterlimit="10"
+      >
+        <path
+          d="M180.02826,169.45123c0,0 12.65228,-25.55115 24.2441,-25.66863c6.39271,-0.06479 -5.89143,46.12943 4.90937,50.63857c10.22345,4.2681 24.14292,-52.38336 37.86455,-59.80493c3.31715,-1.79413 -5.35094,45.88889 -0.78872,58.34589c5.19371,14.18125 33.36934,-58.38221 36.43049,-56.91633c4.67078,2.23667 -0.06338,44.42744 5.22574,47.53647c6.04041,3.55065 19.87185,-20.77286 19.87185,-20.77286"
+        ></path>
+      </g>
+    </g>
+  </svg>
+  Créditos
+</button>
+
+<svg height="0" width="0">
+  <filter id="handDrawnNoise">
+    <feTurbulence
+      result="noise"
+      numOctaves="8"
+      baseFrequency="0.1"
+      type="fractalNoise"
+    ></feTurbulence>
+    <feDisplacementMap
+      yChannelSelector="G"
+      xChannelSelector="R"
+      scale="3"
+      in2="noise"
+      in="SourceGraphic"
+    ></feDisplacementMap>
+  </filter>
+  <filter id="handDrawnNoise2">
+    <feTurbulence
+      result="noise"
+      numOctaves="8"
+      baseFrequency="0.1"
+      seed="1010"
+      type="fractalNoise"
+    ></feTurbulence>
+    <feDisplacementMap
+      yChannelSelector="G"
+      xChannelSelector="R"
+      scale="3"
+      in2="noise"
+      in="SourceGraphic"
+    ></feDisplacementMap>
+  </filter>
+
+  <filter id="handDrawnNoiset">
+    <feTurbulence
+      result="noise"
+      numOctaves="8"
+      baseFrequency="0.1"
+      type="fractalNoise"
+    ></feTurbulence>
+    <feDisplacementMap
+      yChannelSelector="G"
+      xChannelSelector="R"
+      scale="6"
+      in2="noise"
+      in="SourceGraphic"
+    ></feDisplacementMap>
+  </filter>
+  <filter id="handDrawnNoiset2">
+    <feTurbulence
+      result="noise"
+      numOctaves="8"
+      baseFrequency="0.1"
+      seed="1010"
+      type="fractalNoise"
+    ></feTurbulence>
+    <feDisplacementMap
+      yChannelSelector="G"
+      xChannelSelector="R"
+      scale="6"
+      in2="noise"
+      in="SourceGraphic"
+    ></feDisplacementMap>
+  </filter>
+</svg>
+</a>
+  </main>
+
+ <footer class="footer">
+  <div class="footer-container">
+   
+    <img src="imagenes/logo.png" alt="Logo El Antojito" class="footer-logo">
+
+    <p class="footer-direccion">Calle Falsa 123, Springfield</p>
+    <p class="footer-telefono">Tel: +54 9 11 1234-5678</p>
+    
+    <div class="footer-redes">
+       <a href="https://www.instagram.com/" alt="instagram" target="_blank"><img src="imagenes/insta.png" alt="Instagram"></a>
+      <a href="https://www.facebook.com/" alt="facebook" target="_blank"><img src="imagenes/facebook.png" alt="Facebook"></a>
+    </div>
+   
+    <p class="footer-copy">© 2025 El Antojito</p>
+  </div>
+</footer>
+
+ <script>
+  // Barra de progreso
+  window.onscroll = function() {
+    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+    var progress = (scrollPosition / docHeight) * 100;
+    document.querySelector('.progress-bar').style.width = progress + '%';
+  };
+
+  // Menú escritorio (hamburguesa si existiera)
+  (function(){
+    const btn = document.getElementById('menuToggle');
+    const nav = document.getElementById('main-nav');
+    if(btn){
+      btn.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      });
+    }
+  })();
+
+  // Menú móvil con logo
+  document.addEventListener("DOMContentLoaded", function() {
+    const logo = document.querySelector(".logo img");
+    const nav = document.getElementById("main-nav");
+
+    // Crear overlay si no existe
+    let overlay = document.querySelector(".menu-overlay");
+    if(!overlay){
+      overlay = document.createElement("div");
+      overlay.className = "menu-overlay";
+      document.body.appendChild(overlay);
+    }
+
+    // Logo abre/cierra menú
+    logo.addEventListener("click", function(e) {
+      e.preventDefault();
+      const isOpen = nav.classList.toggle("open");
+      overlay.classList.toggle("active", isOpen);
+      logo.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    // Cerrar menú al click en overlay
+    overlay.addEventListener("click", function() {
+      nav.classList.remove("open");
+      overlay.classList.remove("active");
+      logo.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  // Año dinámico en footer
+  const yearEl = document.getElementById('year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

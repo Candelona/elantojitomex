@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Restaurante El Antojito</title>
+  <link rel="stylesheet" href="galeria_files/vlb_files1/vlightbox1.css" type="text/css" />
+  <link rel="stylesheet" href="galeria_files/vlb_files1/visuallightbox.css" type="text/css" media="screen" />
+  <link rel="icon" href="imagenes/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="antojitoweb.css" rel="stylesheet" type="text/css"/>
+   <style>
+    .progress-bar-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 5px;
+      background-color: #f3f3f3;
+      z-index: 9999;
+    }
+    .progress-bar { height: 100%; width: 0; background-color: #fcae05; }
+
+    body { margin: 0; padding: 0; height: auto; }
+
+    header {
+      position: sticky; top: 0; background: #fff; z-index: 1000;
+      display: flex; align-items: center; justify-content:flex-start;
+      padding: 8px 16px; border-bottom: 1px solid #eee; overflow: hidden;
+    }
+    .logo { display: flex; align-items: center; gap: 8px; }
+
+    .menu-overlay{
+      position:fixed; top:0; left:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.4); opacity:0; visibility:hidden; transition:opacity .6s ease; z-index:998;
+    }
+    .menu-overlay.active{ opacity:1; visibility:visible; }
+
+    nav#main-nav{
+      position:absolute; top:50%; left:235px;
+      transform:translateY(-50%) translateX(-40px);
+      display:flex; gap:20px; align-items:center; background:#fff;
+      padding:12px 18px; border-radius:40px; box-shadow:0 6px 18px rgba(0,0,0,0.12);
+      opacity:0; pointer-events:none;
+      transition:transform .85s cubic-bezier(.2,.8,.2,1), opacity .85s ease;
+      z-index:1002;
+    }
+    nav#main-nav.open{ transform:translateY(-50%) translateX(0); opacity:1; pointer-events:auto; }
+    nav#main-nav a{ text-decoration:none; color:#2c9e03; font-weight:700; font-size:16px; padding:6px 10px; white-space:nowrap; }
+    nav#main-nav a:hover{ color:#ffffff; }
+
+    .logo img{ cursor:pointer; user-select:none; }
+
+    .hamburger {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      z-index: 1100;
+    }
+    .hamburger .bar,
+    .hamburger .bar::before,
+    .hamburger .bar::after {
+      content: "";
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      height: 3px;
+      background: #731209;
+      border-radius: 2px;
+      transition: transform .3s ease, opacity .3s ease;
+    }
+    .hamburger .bar { top: 50%; transform: translateY(-50%); }
+    .hamburger .bar::before { top: -10px; }
+    .hamburger .bar::after { top: 10px; }
+    .hamburger[aria-expanded="true"] .bar { opacity: 0; }
+    .hamburger[aria-expanded="true"] .bar::before { transform: translateY(10px) rotate(45deg); }
+    .hamburger[aria-expanded="true"] .bar::after { transform: translateY(-10px) rotate(-45deg); }
+
+    @media (max-width: 900px) {
+      .logo img { display: none !important; }
+      .hamburger { display: inline-block !important; }
+      .logo a { pointer-events: none; }
+      nav#main-nav{
+        position:fixed; top:64px; left:0; width:100%;
+        transform:translateY(-100%); opacity:0; pointer-events:none;
+        flex-direction:column; align-items:stretch; gap:0; border-radius:0;
+        padding:8px 12px; box-shadow:0 6px 18px rgba(0,0,0,0.12);
+        background:#fff; transition:transform .3s ease, opacity .3s ease;
+      }
+      nav#main-nav.open{
+        transform:translateY(0); opacity:1; pointer-events:auto;
+      }
+      nav#main-nav a{ padding:12px 16px; border-bottom:1px solid rgba(0,0,0,0.04); }
+    }
+
+    @media (min-width: 901px) {
+      .hamburger { display: none !important; }
+      .logo img { display: inline-block !important; }
+    }
+  </style>
+</head>
+
+<body id="galeria">
+  <div class="progress-bar-container"><div class="progress-bar"></div></div>
+
+  <header>
+    <div class="logo">
+      <a href="index.html" title="Página principal">
+        <img src="imagenes/logo.png" alt="logo">
+      </a>
+      <button class="hamburger" id="menuToggle" aria-label="Abrir menú" aria-controls="main-nav" aria-expanded="false">
+        <span class="bar"></span>
+      </button>
+    </div>
+<div class="logoh">
+	<img src="imagenes/logoh.png" alt="logo">
+	</div>
+    <nav id="main-nav">
+      <a href="index.html">INICIO</a>
+      <a href="historia.html">HISTORIA</a>
+      <a href="especialidades.html">ESPECIALIDADES</a>
+      <a href="galeria.html">GALERÍA GASTRONÓMICA</a>
+      <a href="delivery.html">DELIVERY</a>
+      <a href="reseñas.html">RESEÑAS</a>
+    </nav>
+  </header>
+
+  <!-- Overlay para menú -->
+  <div class="menu-overlay"></div>
+
+  <!-- MAIN -->
+  <main>
+   <div class="galeriatitulo"> <h1>FOTO DE LOS PLATILLOS</h1></div>
+
+    <!-- GALERÍA VISUAL LIGHTBOX -->
+    <div id="vlightbox1">
+      <a class="vlightbox1" href="galeria_files/vlb_images1/gal1.jpg"><img src="galeria_files/vlb_thumbnails1/gal1.jpg" alt=""/></a>
+      <a class="vlightbox1" href="galeria_files/vlb_images1/gal2.jpg"><img src="galeria_files/vlb_thumbnails1/gal2.jpg" alt=""/></a>
+      <a class="vlightbox1" href="galeria_files/vlb_images1/gal3.jpg"><img src="galeria_files/vlb_thumbnails1/gal3.jpg" alt=""/></a>
+      <a class="vlightbox1" href="galeria_files/vlb_images1/gal4.jpg"><img src="galeria_files/vlb_thumbnails1/gal4.jpg" alt=""/></a>
+      <a class="vlightbox1" href="galeria_files/vlb_images1/gal5.jpg"><img src="galeria_files/vlb_thumbnails1/gal5.jpg" alt=""/></a>
+      <a class="vlightbox1" href="galeria_files/vlb_images1/gal6.jpg"><img src="galeria_files/vlb_thumbnails1/gal6.jpg" alt=""/></a>
+      <a class="vlightbox1" href="galeria_files/vlb_images1/gal7.jpg"><img src="galeria_files/vlb_thumbnails1/gal7.jpg" alt=""/></a>
+      <a class="vlightbox1" href="galeria_files/vlb_images1/gal8.jpg"><img src="galeria_files/vlb_thumbnails1/gal8.jpg" alt=""/></a>
+      <a class="vlightbox1" href="galeria_files/vlb_images1/gal9.jpg"><img src="galeria_files/vlb_thumbnails1/gal9.jpg" alt=""/></a>
+    </div>
+
+    <script src="galeria_files/vlb_engine/jquery.min.js"></script>
+    <script src="galeria_files/vlb_engine/visuallightbox.js"></script>
+    <script src="galeria_files/vlb_engine/vlbdata1.js"></script>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+  <div class="footer-container">
+    <!-- Logo -->
+    <img src="imagenes/logo.png" alt="Logo El Antojito" class="footer-logo">
+
+    <!-- Dirección y teléfono -->
+    <p class="footer-direccion">Calle Falsa 123, Springfield</p>
+    <p class="footer-telefono">Tel: +54 9 11 1234-5678</p>
+
+    <!-- Redes sociales -->
+   <div class="footer-redes">
+       <a href="https://www.instagram.com/" alt="instagram" target="_blank"><img src="imagenes/insta.png" alt="Instagram"></a>
+      <a href="https://www.facebook.com/" alt="facebook" target="_blank"><img src="imagenes/facebook.png" alt="Facebook"></a>
+    </div>
+    
+    <!-- Copyright opcional -->
+    <p class="footer-copy">© 2025 El Antojito</p>
+  </div>
+</footer>
+
+  <!-- JS -->
+  <script>
+    // Barra de progreso
+    window.onscroll = function() {
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
+      const progress = (scrollPos / docHeight) * 100;
+      document.querySelector('.progress-bar').style.width = progress + '%';
+    };
+
+(function(){
+      const btn = document.getElementById('menuToggle');
+      const nav = document.getElementById('main-nav');
+      btn.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      });
+    })();
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const logo = document.querySelector(".logo img");
+      const nav = document.querySelector("nav#main-nav");
+      const overlay = document.createElement("div");
+      overlay.className = "menu-overlay";
+      document.body.appendChild(overlay);
+      logo.addEventListener("click", (event) => {
+        event.preventDefault();
+        const isOpen = nav.classList.toggle("open");
+        overlay.classList.toggle("active", isOpen);
+      });
+      overlay.addEventListener("click", () => {
+        nav.classList.remove("open");
+        overlay.classList.remove("active");
+      });
+    });
+    // Año automático en footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
